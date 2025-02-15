@@ -17,7 +17,7 @@ load_dotenv()
 # ---------------------------------------------------------------
 # API UTILS 
 # ---------------------------------------------------------------
-API_BASE_URL = os.getenv("API_PROD_URL", "http://172.0.0.1:8000")
+API_BASE_URL = os.getenv("API_PROD_URL", "http://127.0.0.1:8000")
 def submit_file_to_api(file_path, output_format):
     with open(file_path, "rb") as f:
         files = {"file": f}

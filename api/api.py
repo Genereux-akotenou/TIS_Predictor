@@ -22,7 +22,7 @@ UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 OUTPUT_DIR = Path("./__files__/results")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-API_PROD_URL = os.getenv("API_PROD_URL", "http://172.0.0.1:8000")
+API_PROD_URL = os.getenv("API_PROD_URL", "http://127.0.0.1:8000")
 TASKS_FILE = Path("./__files__/tasks/tasks_checkpoint.json")
 
 logging.basicConfig(
