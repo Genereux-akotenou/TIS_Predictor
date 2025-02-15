@@ -1,2 +1,7 @@
 venv
 .env
+/__files__
+/api/__pycache__
+ui/.DS_Store
+ui/static/.DS_Store
+.DS_Store
