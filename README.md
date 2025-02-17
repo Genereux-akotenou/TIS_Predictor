@@ -23,7 +23,7 @@ streamlit run ui/app.py
 
 ####  Launch the api
 ```
-uvicorn --app-dir api api:app --host 172.0.0.1 --port 8000 --reload
+uvicorn --app-dir api api:app --host 127.0.0.1 --port 8000 --reload
 ```
 
 #### Launch annotation:

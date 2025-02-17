@@ -19,16 +19,35 @@ OUTPUT_DIR = Path("./__files__/results")
 class AnnotatorPipeline:
     def __init__(self):
         """Initialize models"""
-        self.batch_size = 640
         self.device = torch.cuda.current_device() if torch.cuda.is_available() else 'cpu'
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.batch_size = self.get_optimal_batch_size()
+        
         model_cds_checkpoint = "Genereux-akotenou/BacteriaCDS-DNABERT-K6-89M"
         model_tis_checkpoint = "Genereux-akotenou/BacteriaTIS-DNABERT-K6-89M"
         self.model_cds = AutoModelForSequenceClassification.from_pretrained(model_cds_checkpoint).to(self.device)
         self.model_tis = AutoModelForSequenceClassification.from_pretrained(model_tis_checkpoint).to(self.device)
         self.tokenizer = AutoTokenizer.from_pretrained(model_cds_checkpoint)
+        
         logging.info(f"Inference using: {self.device}\n")
-        # result = subprocess.run(["nvidia-smi"], capture_output=True, text=True, check=True)
-        # logging.info(f"{result.stdout}")
+        logging.info(f"Optimal batch size: {self.batch_size}")
+        
+    def get_optimal_batch_size(self):
+        if str(self.device.type) == "cuda":
+            gpu_properties = torch.cuda.get_device_properties(self.device)
+            total_memory = gpu_properties.total_memory // (1024 ** 2)
+            free_memory = torch.cuda.mem_get_info()[0] // (1024 ** 2)
+
+            logging.info(f"GPU Total Memory: {total_memory} MB, Free Memory: {free_memory} MB")
+
+            # estimate batch size based on free memory 
+            base_batch_size = 64
+            memory_per_sample = 10
+            max_batch_size = free_memory // memory_per_sample
+            optimal_batch_size = min(max_batch_size, 1024)
+            return max(optimal_batch_size, 16)
+        else:
+            return 32
         
     def _generate_kmer(self, sequence: str, k: int, overlap: int = 1):
         return " ".join([sequence[j:j+k] for j in range(0, len(sequence) - k + 1, overlap)])

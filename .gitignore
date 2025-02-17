@@ -5,3 +5,4 @@ venv
 ui/.DS_Store
 ui/static/.DS_Store
 .DS_Store
+api/__pycache__/
