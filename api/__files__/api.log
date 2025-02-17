@@ -345,3 +345,7 @@
 2025-02-14 17:44:45,231 - INFO - Task a1222fdc-e500-465b-8c8d-69319f655666 completed - Result: __files__/results/a1222fdc-e500-465b-8c8d-69319f655666_tmpiv8z0k9l.gff
 2025-02-14 17:44:45,722 - INFO - Progress check - Task a1222fdc-e500-465b-8c8d-69319f655666 - Status: Completed - Progress: 100%
 2025-02-14 17:44:45,729 - INFO - Result retrieved - Task a1222fdc-e500-465b-8c8d-69319f655666 - File URL: http://10.52.88.33:8000/tis/download/a1222fdc-e500-465b-8c8d-69319f655666_tmpiv8z0k9l.gff
+2025-02-17 15:54:41,999 - INFO - GPU Total Memory: 11925 MB, Free Memory: 10993 MB
+2025-02-17 15:54:47,162 - INFO - Inference using: cuda
+
+2025-02-17 15:54:47,162 - INFO - Optimal batch size: 1024

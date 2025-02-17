@@ -6,3 +6,4 @@ ui/.DS_Store
 ui/static/.DS_Store
 .DS_Store
 api/__pycache__/
+api/__files__/
