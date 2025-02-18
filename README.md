@@ -1,5 +1,14 @@
 ## Benchmarck Table
-<img src="./ui/static/TIS_vs_Prodigal.png"/>
+<!-- <img src="./ui/static/TIS_vs_Prodigal.png"/> -->
+
+| Method  | Bacteria                                      | Total Verified CDS | Prodigal Matched | Prodigal Missed | Prodigal Total Found | TIS_Annotator Matched | TIS_Annotator Missed | TIS_Annotator Total Found |
+|---------|----------------------------------------------|--------------------|------------------|----------------|------------------|------------------|----------------|------------------|
+|         | **Escherichia coli K-12 MG1655**             | 769                | 338              | 431            | 4347             | 744              | 25             | 4213             |
+|         | **Halobacterium salinarum R1**               | 530                | 243              | 287            | 2851             | 438              | 92             | 2659             |
+|         | **Mycobacterium tuberculosis H37Rv**         | 701                | 311              | 390            | 4204             | 626              | 75             | 3853             |
+|         | **Natronomonas pharaonis DSM 2160**          | 315                | 169              | 146            | 2873             | 248              | 67             | 2737             |
+|         | **Roseobacter denitrificans Och114**         | 526                | 0                | 526            | 4120             | 492              | 34             | 4006             |
+
 
 ## Web tools guidelines
 <img src="./ui/static/app.png"/>
