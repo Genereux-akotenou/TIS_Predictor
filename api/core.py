@@ -42,9 +42,9 @@ class AnnotatorPipeline:
 
             # estimate batch size based on free memory 
             base_batch_size = 64
-            memory_per_sample = 10
+            memory_per_sample = 15
             max_batch_size = free_memory // memory_per_sample
-            optimal_batch_size = min(max_batch_size, 1024)
+            optimal_batch_size = min(max_batch_size, 2048)
             return max(optimal_batch_size, 16)
         else:
             return 32
@@ -251,7 +251,9 @@ class AnnotatorPipeline:
         
         df = df[df["prediction_max_likelihood"] == 1].copy()
         df["start"] = df["start"].astype(int)
-        df = df.sort_values(by="start", ascending=True)
+        df["start"] = df["start"] - 1
+        # df = df.sort_values(by="start", ascending=True)
+        df = df.sort_values(by=["seq_id", "start"], ascending=[True, True])
         
         if output_format.upper() == "CSV":
             df.drop(columns=["sequence"], inplace=True)
@@ -298,6 +300,7 @@ class AnnotatorPipeline:
                 
             # 2. orf extraction
             results = []
+            all_bacteria = ""
             for record in fna_data:
                 self._update_progress(tasks, task_uuid, progress=20, status="Generating ORF", result="...", state_key="ORF", state_value=1)
                 df_list  = []
@@ -369,12 +372,14 @@ class AnnotatorPipeline:
                 
                 # 7. Output: Collect results
                 results.append(df_combined)
+                all_bacteria += bacteria if all_bacteria == "" else (bacteria + "-")
                 
             # 7. Output: format output file and return
+            final_df = pd.concat([df for df in results if not df.empty], ignore_index=True)
             self._update_progress(tasks, task_uuid, progress=100, status="Generating output files", result="...", state_key="Output", state_value=50)
-            result_path = self._save_output(df_combined, output_format, file_path, task_uuid)
+            result_path = self._save_output(final_df, output_format, file_path, task_uuid)
             self._update_progress(tasks, task_uuid, progress=100, status="Completed", result=str(result_path), state_key="Output", state_value=100)
-            tasks[task_uuid]["exec_state"]["seq_id"] = bacteria.replace(' ', '_')
+            tasks[task_uuid]["exec_state"]["seq_id"] = all_bacteria[:-1].replace(' ', '_') if all_bacteria[-1] == '-' else all_bacteria.replace(' ', '_')
             return result_path
         
         except Exception as e:
