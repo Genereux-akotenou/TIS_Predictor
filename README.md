@@ -1,7 +1,10 @@
+## Benchmarck Table
+<img src="./ui/static/TIS_vs_Prodigal.png"/>
+
+## Web tools guidelines
 <img src="./ui/static/app.png"/>
 
-
-#### Create environment
+#### 1. Create environment
 Firstly, we will create a python environment called
 ```sh
 python -m venv venv
@@ -10,23 +13,23 @@ Secondly, we will login to the environement
 ```sh
 source ./venv/bin/activate
 ```
-#### Install prerequisite libraries
+#### 2. Install prerequisite libraries
 
 ```sh
 pip install -r requirements.txt
 ```
 
-####  Launch the web tool ui
+####  3. Launch the web tool ui
 ```
 streamlit run ui/app.py
 ```
 
-####  Launch the api
+####  4. Launch the api
 ```
 uvicorn --app-dir api api:app --host 127.0.0.1 --port 8000 --reload
 ```
 
-#### Launch annotation:
+#### 5. Start annotation
 
 Go on the web tool page and submit a fasta/fna file containing your full genome sequence:
 

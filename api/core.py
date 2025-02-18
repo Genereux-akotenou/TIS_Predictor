@@ -251,7 +251,7 @@ class AnnotatorPipeline:
         
         df = df[df["prediction_max_likelihood"] == 1].copy()
         df["start"] = df["start"].astype(int)
-        df["start"] = df["start"] - 1
+        df["start"] = df["start"] + 1
         # df = df.sort_values(by="start", ascending=True)
         df = df.sort_values(by=["seq_id", "start"], ascending=[True, True])
         
