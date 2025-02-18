@@ -510,3 +510,19 @@
 2025-02-18 10:48:48,648 - INFO - Task 9368f4dd-cb10-49e5-b76b-8c0ff1931461 completed - Result: __files__/results/9368f4dd-cb10-49e5-b76b-8c0ff1931461_tmptdc6p3jk.gff
 2025-02-18 10:48:49,761 - INFO - Progress check - Task 9368f4dd-cb10-49e5-b76b-8c0ff1931461 - Status: Completed - Progress: 100%
 2025-02-18 10:48:49,768 - INFO - Result retrieved - Task 9368f4dd-cb10-49e5-b76b-8c0ff1931461 - File URL: http://10.52.88.33:8000/tis/download/9368f4dd-cb10-49e5-b76b-8c0ff1931461_tmptdc6p3jk.gff
+2025-02-18 11:05:38,106 - INFO - GPU Total Memory: 11925 MB, Free Memory: 10926 MB
+2025-02-18 11:05:39,287 - INFO - Inference using: cuda
+
+2025-02-18 11:05:39,287 - INFO - Optimal batch size: 728
+2025-02-18 11:05:43,145 - INFO - GPU Total Memory: 11925 MB, Free Memory: 10937 MB
+2025-02-18 11:05:44,277 - INFO - Inference using: cuda
+
+2025-02-18 11:05:44,277 - INFO - Optimal batch size: 729
+2025-02-18 11:05:55,903 - INFO - GPU Total Memory: 11925 MB, Free Memory: 10926 MB
+2025-02-18 11:05:57,005 - INFO - Inference using: cuda
+
+2025-02-18 11:05:57,006 - INFO - Optimal batch size: 728
+2025-02-18 11:06:00,945 - INFO - GPU Total Memory: 11925 MB, Free Memory: 10928 MB
+2025-02-18 11:06:02,086 - INFO - Inference using: cuda
+
+2025-02-18 11:06:02,086 - INFO - Optimal batch size: 728
