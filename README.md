@@ -1,4 +1,4 @@
-## TIS Predictor
+## TIS Annotator
 
 Translation Initiation Site Predictor in Bacteria
 : This tool predicts coding sequences (CDS) and refines Translation Initiation Sites (TIS) for bacterial genomes using two stages genomic language model pipeline.
